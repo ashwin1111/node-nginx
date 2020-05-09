@@ -13,6 +13,7 @@ Configure nginx as a web server for node js application.
 <li>start nginx
 <li>head to <a href="http://localhost:80">localhost</a> and check if your nginx is up and running
 <li> Add these contents to the nginx conf file (change the port number, server name in accordance)
+
 ```
 upstream my_http_servers {
     least_conn;
@@ -37,12 +38,19 @@ server {
     }
 }
 ```
+
 Run your node application in different ports
+
 `pm2 start app.js --node-args="app.js 3001" --name firstInstance`
+
 `pm2 start app.js --node-args="app.js 3002" --name secondInstance`
+
 `pm2 start app.js --node-args="app.js 3003" --name thirdInstance`
+
 `pm2 start app.js --node-args="app.js 3004" --name fourthInstance`
+
 <br>
+
 <li>Reload your nginx (nginx -s reload)
 <li>Go to browser and navigate to <a href="http://localhost:81">localhost:81</a> to see which port the application runs on
 <li>Keep reloading the browser to confirm whether it runs on multiple ports
